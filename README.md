@@ -1,7 +1,7 @@
 Мерялка языками программирования
 ================
 
-Синопсис: [статья на вечерке](http://vecherka.cssum.net/v5/proglang-contest.html)
+Синопсис: [статья на вечерке](http://vecherka.cssum.net/v5/proglang-contest.html).
 
 Как добавлять
 ================
