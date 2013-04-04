@@ -44,6 +44,10 @@ with open('../input.txt', 'r') as f:
         numbers.append(line.strip().lower())
 
 
+# for simple memoization
+words_combinations_cache = {}
+
+
 def words_combinations(number_str):
     """
     Returns a list of all possible words *combinations*
@@ -52,6 +56,8 @@ def words_combinations(number_str):
     
     For example: 63263379355 - [..., 'me codes well', ...] - 57 combinations
     """
+    if number_str in words_combinations_cache:
+        return words_combinations_cache[number_str]
     combinations_list = []
     for i in range(MIN_WORD_LENGTH, len(number_str) + 1):
         first_word_list = number2words.get(number_str[:i], None)
@@ -64,6 +70,7 @@ def words_combinations(number_str):
                     combinations_list.extend(
                         ' '.join(p) for p in product(
                             first_word_list, remaining_combinations_list))
+    words_combinations_cache[number_str] = combinations_list
     return combinations_list
 
 
