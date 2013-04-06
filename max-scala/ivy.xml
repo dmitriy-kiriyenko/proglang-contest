@@ -1,0 +1,10 @@
+<ivy-module version="1.4">
+  <info organisation="maximro" module="phones" />
+  <configurations>
+    <conf name="default" />
+    <conf name="test" />
+  </configurations>
+  <dependencies>
+    <dependency org="org.scalatest" name="scalatest_2.10" rev="2.0.M5b" transitive="false"/>
+  </dependencies>
+</ivy-module>
