@@ -8,7 +8,7 @@ class PhonesSuite extends FunSuite {
     assert(Phones.letterToDigit('B') === '2')
     assert(Phones.letterToDigit('Z') === '9')
   }
-  
+
   test("wordToNumber") {
     assert(Phones.wordToNumber("aaa") === "222")
     assert(Phones.wordToNumber("a") === "2")
@@ -16,7 +16,7 @@ class PhonesSuite extends FunSuite {
   }
 
   test("numberToWords") {
-    assert(Phones.numberToWords(Seq("aaa", "aab", "abc", "ddd", "eee")) ===
+    assert(Phones("aaa", "aab", "abc", "ddd", "eee").numberToWords ===
       Map("222" -> List("aaa", "aab", "abc"), "333" -> List("ddd", "eee")))
   }
 

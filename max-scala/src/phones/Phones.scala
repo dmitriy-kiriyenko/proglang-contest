@@ -2,8 +2,8 @@ package phones
 
 import scala.io.Source
 
-class Phones(words: Iterator[String]) {
-  val numberToWords = Phones.numberToWords(words.toSeq)
+class Phones(words: Seq[String]) {
+  val numberToWords = words.groupBy(Phones.wordToNumber)
 
   def encodings(number: String): Seq[String] = {
     def iter(digits: String): Seq[List[String]] = {
@@ -32,13 +32,9 @@ object Phones {
     (for ((d, letters) <- digitToLetters; l <- letters) yield l -> d).toMap
 
   def wordToNumber(word: String): String = {
-    word.toUpperCase.map(c => letterToDigit.getOrElse(c, "")).mkString
+    word.toUpperCase.map(letterToDigit.withDefaultValue("")).mkString
   }
 
-  def numberToWords(words: Seq[String]): Map[String, Seq[String]] = {
-    words.groupBy(wordToNumber)
-  }
-
-  def apply(words: String*) = new Phones(words.toIterator)
-  def apply() = new Phones(Source.fromFile(wordsFile, "UTF-8").getLines)
+  def apply(words: String*) = new Phones(words)
+  def apply() = new Phones(Source.fromFile(wordsFile, "UTF-8").getLines.toSeq)
 }
